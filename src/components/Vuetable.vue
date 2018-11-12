@@ -309,7 +309,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   props: {
@@ -729,7 +728,7 @@ export default {
     fetch (apiUrl, httpOptions) {
       return this.httpFetch
           ? this.httpFetch(apiUrl, httpOptions)
-          : axios[this.httpMethod](apiUrl, httpOptions)
+          : this.$axios[this.httpMethod](apiUrl, httpOptions)
     },
     loadSuccess (response) {
       this.fireEvent('load-success', response)
