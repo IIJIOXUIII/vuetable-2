@@ -690,7 +690,7 @@ export default {
     renderSequence (index) {
       return this.tablePagination
         ? this.tablePagination.from + index
-        : index
+        : index + 1
     },
     renderNormalField (field, item) {
       return this.hasCallback(field)
