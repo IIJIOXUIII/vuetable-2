@@ -137,7 +137,10 @@
                 @click="onDetailRowClick(item, $event)"
               >
                 <td :colspan="countVisibleFields">
-                  <component :is="detailRowComponent" :row-data="item" :row-index="itemIndex"></component>
+                  <slot v-if="useDetailRowSlot" :name="detailRowComponent"
+                    :row-data="item" :row-index="itemIndex"
+                  ></slot>
+                  <component v-else :is="detailRowComponent" :row-data="item" :row-index="itemIndex"></component>
                 </td>
               </tr>
             </transition>
@@ -286,6 +289,9 @@
             @click="onDetailRowClick(item, $event)"
           >
             <td :colspan="countVisibleFields">
+              <slot v-if="useDetailRowSlot" :name="detailRowComponent"
+                :row-data="item" :row-index="itemIndex"
+              ></slot>
               <component :is="detailRowComponent" :row-data="item" :row-index="itemIndex"></component>
             </td>
           </tr>
@@ -430,6 +436,10 @@ export default {
     detailRowComponent: {
       type: String,
       default: ''
+    },
+    useDetailRowSlot: {
+      type: Boolean,
+      default: false
     },
     detailRowTransition: {
       type: String,
