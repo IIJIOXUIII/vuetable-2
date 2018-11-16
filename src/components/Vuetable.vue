@@ -292,7 +292,7 @@
               <slot v-if="useDetailRowSlot" :name="detailRowComponent"
                 :row-data="item" :row-index="itemIndex"
               ></slot>
-              <component :is="detailRowComponent" :row-data="item" :row-index="itemIndex"></component>
+              <component v-else :is="detailRowComponent" :row-data="item" :row-index="itemIndex"></component>
             </td>
           </tr>
         </transition>
