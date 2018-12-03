@@ -437,7 +437,7 @@ export default {
       type: String,
       default: ''
     },
-    rowSelectedIndex: {
+    rowSelectedId: {
       type: String,
       default: null
     },
@@ -1240,10 +1240,10 @@ export default {
       }
 
       if (typeof(this.rowClass) === 'function') {
-        return `${this.rowClass(dataItem, index)} ${this.rowSelectedIndex == index ? this.rowSelectedClass : ''}`
+        return `${this.rowClass(dataItem, index)} ${this.rowSelectedId == dataItem[this.trackBy] ? this.rowSelectedClass : ''}`
       }
 
-      return `${this.rowClass} ${this.rowSelectedIndex == index ? this.rowSelectedClass : ''}`
+      return `${this.rowClass} ${this.rowSelectedId == dataItem[this.trackBy] ? this.rowSelectedClass : ''}`
     },
     onRowChanged (dataItem) {
       this.fireEvent('row-changed', dataItem)
