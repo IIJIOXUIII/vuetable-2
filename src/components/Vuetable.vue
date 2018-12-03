@@ -1240,9 +1240,9 @@ export default {
       }
 
       if (typeof(this.rowClass) === 'function') {
-        return this.rowSelectedId == dataItem[this.trackBy] ? `${this.rowClass(dataItem, index)} ${this.rowSelectedClass}` : this.rowClass(dataItem, index)
+        return this.rowSelectedId == dataItem[this.trackBy] ? [this.rowClass(dataItem, index), this.rowSelectedClass] : this.rowClass(dataItem, index)
       }
-      return this.rowSelectedId == dataItem[this.trackBy] ? `${this.rowClass} ${this.rowSelectedClass}` : this.rowClass
+      return this.rowSelectedId == dataItem[this.trackBy] ? [this.rowClass, this.rowSelectedClass] : this.rowClass
     },
     onRowChanged (dataItem) {
       this.fireEvent('row-changed', dataItem)
