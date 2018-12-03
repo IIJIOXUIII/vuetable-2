@@ -1240,10 +1240,9 @@ export default {
       }
 
       if (typeof(this.rowClass) === 'function') {
-        return `${this.rowClass(dataItem, index)} ${this.rowSelectedId == dataItem[this.trackBy] ? this.rowSelectedClass : ''}`
+        return this.rowSelectedId == dataItem[this.trackBy] ? `${this.rowClass(dataItem, index)} ${this.rowSelectedClass}` : this.rowClass(dataItem, index)
       }
-
-      return `${this.rowClass} ${this.rowSelectedId == dataItem[this.trackBy] ? this.rowSelectedClass : ''}`
+      return this.rowSelectedId == dataItem[this.trackBy] ? `${this.rowClass} ${this.rowSelectedClass}` : this.rowClass
     },
     onRowChanged (dataItem) {
       this.fireEvent('row-changed', dataItem)
