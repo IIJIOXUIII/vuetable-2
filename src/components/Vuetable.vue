@@ -85,16 +85,19 @@
                 <template v-if="isSpecialField(field.name)">
                   <td v-if="extractName(field.name) == '__sequence'"
                     :key="fieldIndex"
+                    :style="{width: field.width}"
                     :class="['vuetable-sequence', field.dataClass]"
                     v-html="renderSequence(itemIndex)">
                   </td>
                   <td v-if="extractName(field.name) == '__handle'"
                     :key="fieldIndex"
+                    :style="{width: field.width}"
                     :class="['vuetable-handle', field.dataClass]"
                     v-html="renderIconTag(['handle-icon', css.handleIcon])"
                   ></td>
                   <td v-if="extractName(field.name) == '__checkbox'"
                     :key="fieldIndex"
+                    :style="{width: field.width}"
                     :class="['vuetable-checkboxes', field.dataClass]"
                   >
                     <input type="checkbox"
@@ -103,6 +106,7 @@
                   </td>
                   <td v-if="extractName(field.name) === '__component'"
                     :key="fieldIndex"
+                    :style="{width: field.width}"
                     :class="['vuetable-component', field.dataClass]"
                   >
                     <component :is="extractArgs(field.name)"
@@ -111,6 +115,7 @@
                   </td>
                   <td v-if="extractName(field.name) === '__slot'"
                     :key="fieldIndex"
+                    :style="{width: field.width}"
                     :class="['vuetable-slot', field.dataClass]"
                   >
                     <slot :name="extractArgs(field.name)"
@@ -121,6 +126,7 @@
                 <template v-else>
                   <td :class="field.dataClass"
                     :key="fieldIndex"
+                    :style="{width: field.width}"
                     v-html="renderNormalField(field, item)"
                     @click="onCellClicked(item, field, $event)"
                     @dblclick="onCellDoubleClicked(item, field, $event)"
@@ -228,16 +234,19 @@
             <template v-if="isSpecialField(field.name)">
               <td v-if="extractName(field.name) == '__sequence'"
                 :key="fieldIndex"
+                :style="{width: field.width}"
                 :class="['vuetable-sequence', field.dataClass]"
                 v-html="renderSequence(itemIndex)"
               ></td>
               <td v-if="extractName(field.name) == '__handle'"
                 :key="fieldIndex"
+                :style="{width: field.width}"
                 :class="['vuetable-handle', field.dataClass]"
                 v-html="renderIconTag(['handle-icon', css.handleIcon])"
               ></td>
               <td v-if="extractName(field.name) == '__checkbox'"
                 :key="fieldIndex"
+                :style="{width: field.width}"
                 :class="['vuetable-checkboxes', field.dataClass]"
               >
                 <input type="checkbox"
@@ -246,6 +255,7 @@
               </td>
               <td v-if="extractName(field.name) === '__component'"
                 :key="fieldIndex"
+                :style="{width: field.width}"
                 :class="['vuetable-component', field.dataClass]"
               >
                 <component :is="extractArgs(field.name)"
@@ -254,6 +264,7 @@
               </td>
               <td v-if="extractName(field.name) === '__slot'"
                 :key="fieldIndex"
+                :style="{width: field.width}"
                 :class="['vuetable-slot', field.dataClass]"
               >
                 <slot :name="extractArgs(field.name)"
@@ -264,6 +275,7 @@
             <template v-else>
               <td v-if="hasCallback(field)"
                 :key="fieldIndex"
+                :style="{width: field.width}"
                 :class="field.dataClass"
                 v-html="callCallback(field, item)"
                 @click="onCellClicked(item, field, $event)"
@@ -272,6 +284,7 @@
               ></td>
               <td v-else
                 :key="fieldIndex"
+                :style="{width: field.width}"
                 :class="field.dataClass"
                 v-html="getObjectValue(item, field.name, '')"
                 @click="onCellClicked(item, field, $event)"
