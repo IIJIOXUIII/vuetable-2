@@ -222,7 +222,7 @@
   </thead>
   <tbody v-cloak class="vuetable-body">
     <template v-for="(item, itemIndex) in tableData">
-      <tr v-if="groupBy && (itemIndex == 0 || (item[itemIndex - 1] && (item[itemIndex - 1][groupBy] == item[itemIndex][groupBy])))" :key="itemIndex">
+      <tr v-if="groupBy && (itemIndex == 0 || (tableData[itemIndex - 1][groupBy] != tableData[itemIndex][groupBy]))" :key="itemIndex">
         <td class="group-by" :colspan="countVisibleFields">
           <slot name="group-row"
             :row-data="item" :row-index="itemIndex"
@@ -648,7 +648,7 @@ export default {
       let self = this
       let obj
       if (this.groupBy && !(_.some(this.fields, field => { return field.name == this.groupBy }))) {
-        this.fields.push({
+        this.tableFields.push({
           name: this.groupBy,
           sortField: this.groupBy,
           visible: false,
@@ -668,7 +668,6 @@ export default {
           obj = {
             name: field.name,
             width: field.width,
-            minWidth: field.minWidth,
             title: (field.title === undefined) ? self.setTitle(field.name) : field.title,
             sortField: field.sortField,
             titleClass: (field.titleClass === undefined) ? '' : field.titleClass,
