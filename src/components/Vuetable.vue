@@ -222,7 +222,7 @@
   </thead>
   <tbody v-cloak class="vuetable-body">
     <template v-for="(item, itemIndex) in tableData">
-      <tr v-if="groupBy && (itemIndex == 0 || (tableData[itemIndex - 1][groupBy] != tableData[itemIndex][groupBy]))" :key="itemIndex">
+      <tr v-if="groupBy && (itemIndex == 0 || (tableData[itemIndex - 1][groupBy] != tableData[itemIndex][groupBy]))">
         <td class="group-by" :colspan="countVisibleFields">
           <slot name="group-row"
             :row-data="item" :row-index="itemIndex"
