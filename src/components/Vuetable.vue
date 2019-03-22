@@ -1331,6 +1331,9 @@ export default {
     'perPage' () {
       this.reload();
     },
+    'selectedTo' () {
+      this.$emit('selectedTo', this.selectedTo);
+    },
   },
 }
 </script>
