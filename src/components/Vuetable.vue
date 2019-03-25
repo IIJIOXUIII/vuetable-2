@@ -1334,6 +1334,9 @@ export default {
     'selectedTo' () {
       this.$emit('selectedTo', this.selectedTo);
     },
+    'tableData' () {
+      this.$emit('tableData', this.tableData);
+    },
   },
 }
 </script>
