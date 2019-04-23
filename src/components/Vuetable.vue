@@ -726,7 +726,7 @@ export default {
     },
     renderSequence (index) {
       return this.tablePagination
-        ? this.tablePagination.from + index
+        ? (this.tablePagination.current_page - 1) * this.tablePagination.per_page + 1 + index
         : index + 1
     },
     renderNormalField (field, item) {
