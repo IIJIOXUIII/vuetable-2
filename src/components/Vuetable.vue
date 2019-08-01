@@ -1139,6 +1139,9 @@ export default {
       }
     },
     toggleAllCheckboxes (fieldName, event) {
+      if (!this.tableData) {
+        return;
+      }
       let self = this
       let isChecked = event.target.checked
       let idColumn = this.trackBy
