@@ -1139,7 +1139,7 @@ export default {
       }
     },
     toggleAllCheckboxes (fieldName, event) {
-      if (!this.tableData) {
+      if (!this.tableData || !this.tableData.length ) {
         return;
       }
       let self = this
